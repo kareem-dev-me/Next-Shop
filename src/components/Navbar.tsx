@@ -1,12 +1,15 @@
 import { ShoppingCart, User } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { auth } from "@/auth";
 import { Link } from "@/i18n/navigation";
+import LogoutButton from "./auth/LogoutButton";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 export default async function Navbar() {
   const t = await getTranslations("Nav");
   const tCommon = await getTranslations("Common");
+  const session = await auth();
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/90 backdrop-blur-sm">
@@ -28,7 +31,10 @@ export default async function Navbar() {
           <Link href="/cart" className="transition-colors hover:text-[#1A1A1A]">
             {t("cart")}
           </Link>
-          <Link href="/profile" className="transition-colors hover:text-[#1A1A1A]">
+          <Link
+            href="/profile"
+            className="transition-colors hover:text-[#1A1A1A]"
+          >
             {t("profile")}
           </Link>
         </div>
@@ -44,13 +50,25 @@ export default async function Navbar() {
             <ShoppingCart className="size-4" aria-hidden />
           </Link>
 
-          <Link
-            href="/login"
-            className="inline-flex items-center gap-2 rounded-full bg-[#F3F4F6] px-3.5 py-2 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
-          >
-            <span className="hidden sm:inline">{t("login")}</span>
-            <User className="size-4" aria-hidden />
-          </Link>
+          {session?.user ? (
+            <>
+              <Link
+                href="/profile"
+                className="hidden max-w-[8rem] truncate text-sm font-semibold text-[#1A1A1A] sm:inline"
+              >
+                {session.user.name || session.user.email}
+              </Link>
+              <LogoutButton label={t("logout")} />
+            </>
+          ) : (
+            <Link
+              href="/login"
+              className="inline-flex items-center gap-2 rounded-full bg-[#F3F4F6] px-3.5 py-2 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
+            >
+              <span className="hidden sm:inline">{t("login")}</span>
+              <User className="size-4" aria-hidden />
+            </Link>
+          )}
         </div>
       </nav>
     </header>
