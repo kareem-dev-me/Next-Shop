@@ -15,6 +15,49 @@
     "login": "تسجيل الدخول",
     "rights": "جميع الحقوق محفوظة."
   },
+  "Home": {
+    "headline": "صوت يرافقك أينما كنت",
+    "subtitle": "منتجات مختارة للاستماع اليومي — تصميم نظيف وصوت واضح.",
+    "shopCta": "تسوّق الآن",
+    "loginCta": "تسجيل الدخول",
+    "featured": "اختيارات مميزة",
+    "featuredSubtitle": "منتجات منتقاة لطلبك القادم."
+  },
+  "Cart": {
+    "title": "سلتك",
+    "subtitle": "راجع مشترياتك قبل إتمام الطلب.",
+    "qty": "الكمية",
+    "subtotal": "المجموع الفرعي",
+    "checkout": "إتمام الشراء",
+    "continue": "متابعة التسوق",
+    "empty": "سلتك فارغة"
+  },
+  "Profile": {
+    "title": "ملفك الشخصي",
+    "subtitle": "تفاصيل الحساب والتفضيلات.",
+    "name": "متسوق زائر",
+    "email": "guest@nextshop.com",
+    "viewCart": "عرض السلة",
+    "login": "تسجيل الدخول",
+    "ordersNote": "الطلبات قريباً"
+  },
+  "Product": {
+    "back": "العودة للمتجر",
+    "addToCart": "أضف إلى السلة",
+    "from": "من"
+  },
+  "Products": {
+    "audio": "صوتيات",
+    "wearables": "أجهزة قابلة للارتداء",
+    "pulseHeadphones": "سماعات Pulse",
+    "pulseHeadphonesDesc": "سماعات لاسلكية فوق الأذن بباص عميق وراحة طوال اليوم.",
+    "novaEarbuds": "سماعات Nova",
+    "novaEarbudsDesc": "سماعات صغيرة بصوت نقي وعلبة عملية للجيب.",
+    "orbitSpeaker": "سماعة Orbit",
+    "orbitSpeakerDesc": "سماعة محمولة بوضوح ممتاز وبطارية طويلة.",
+    "fluxWatch": "ساعة Flux",
+    "fluxWatchDesc": "ساعة ذكية بسيطة لتتبع الصحة وبطارية تدوم أسبوعاً."
+  },
   "Auth": {
     "login": {
       "title": "مرحباً بعودتك",

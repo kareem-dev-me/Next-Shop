@@ -15,6 +15,49 @@
     "login": "Log in",
     "rights": "All rights reserved."
   },
+  "Home": {
+    "headline": "Sound that moves with you",
+    "subtitle": "Curated gear for everyday listening — clean design, clear audio.",
+    "shopCta": "Shop now",
+    "loginCta": "Log in",
+    "featured": "Featured picks",
+    "featuredSubtitle": "Hand-picked products ready for your next haul."
+  },
+  "Cart": {
+    "title": "Your cart",
+    "subtitle": "Review your picks before checkout.",
+    "qty": "Qty",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "continue": "Continue shopping",
+    "empty": "Your cart is empty"
+  },
+  "Profile": {
+    "title": "Your profile",
+    "subtitle": "Account details and preferences.",
+    "name": "Guest Shopper",
+    "email": "guest@nextshop.com",
+    "viewCart": "View cart",
+    "login": "Log in",
+    "ordersNote": "Orders coming soon"
+  },
+  "Product": {
+    "back": "Back to shop",
+    "addToCart": "Add to cart",
+    "from": "From"
+  },
+  "Products": {
+    "audio": "Audio",
+    "wearables": "Wearables",
+    "pulseHeadphones": "Pulse Headphones",
+    "pulseHeadphonesDesc": "Over-ear wireless headphones with deep bass and all-day comfort.",
+    "novaEarbuds": "Nova Earbuds",
+    "novaEarbudsDesc": "Compact earbuds with crisp sound and a pocket-ready case.",
+    "orbitSpeaker": "Orbit Speaker",
+    "orbitSpeakerDesc": "Portable speaker with room-filling clarity and long battery life.",
+    "fluxWatch": "Flux Watch",
+    "fluxWatchDesc": "Minimal smartwatch with wellness tracking and a week of battery."
+  },
   "Auth": {
     "login": {
       "title": "Welcome back",
