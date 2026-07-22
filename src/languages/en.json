@@ -78,6 +78,81 @@
     "fluxWatch": "Flux Watch",
     "fluxWatchDesc": "Minimal smartwatch with wellness tracking and a week of battery."
   },
+  "Admin": {
+    "brand": "Next Shop Admin",
+    "backToStore": "Back to store",
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "categories": "Categories",
+    "customers": "Customers",
+    "users": "Users",
+    "add": "Add",
+    "edit": "Edit",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "role": "Role",
+    "price": "Price",
+    "stock": "Stock",
+    "status": "Status",
+    "category": "Category",
+    "slug": "Slug",
+    "description": "Description",
+    "orders": "Orders",
+    "spent": "Spent",
+    "productsCount": "Products",
+    "save": "Save",
+    "cancel": "Cancel",
+    "recentOrders": "Recent orders",
+    "customer": "Customer",
+    "total": "Total",
+    "stats": {
+      "products": "Products",
+      "orders": "Orders",
+      "customers": "Customers",
+      "revenue": "Revenue"
+    },
+    "login": {
+      "title": "Admin sign in",
+      "subtitle": "Access the Next Shop dashboard",
+      "submit": "Sign in"
+    },
+    "productsPage": {
+      "title": "Products",
+      "subtitle": "Manage your catalog",
+      "add": "Add product"
+    },
+    "addProduct": {
+      "title": "Add product",
+      "subtitle": "Create a new catalog item"
+    },
+    "categoriesPage": {
+      "title": "Categories",
+      "subtitle": "Organize your products",
+      "add": "Add category"
+    },
+    "addCategory": {
+      "title": "Add category",
+      "subtitle": "Create a new category"
+    },
+    "customersPage": {
+      "title": "Customers",
+      "subtitle": "People who shop with you"
+    },
+    "usersPage": {
+      "title": "Users",
+      "subtitle": "Admin and staff accounts",
+      "add": "Add user"
+    },
+    "addUser": {
+      "title": "Add user",
+      "subtitle": "Invite a team member"
+    },
+    "dashboardPage": {
+      "title": "Dashboard",
+      "subtitle": "Overview of your store"
+    }
+  },
   "Auth": {
     "login": {
       "title": "Welcome back",

@@ -78,6 +78,81 @@
     "fluxWatch": "ساعة Flux",
     "fluxWatchDesc": "ساعة ذكية بسيطة لتتبع الصحة وبطارية تدوم أسبوعاً."
   },
+  "Admin": {
+    "brand": "Next Shop Admin",
+    "backToStore": "العودة للمتجر",
+    "dashboard": "لوحة التحكم",
+    "products": "المنتجات",
+    "categories": "التصنيفات",
+    "customers": "العملاء",
+    "users": "المستخدمون",
+    "add": "إضافة",
+    "edit": "تعديل",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "role": "الدور",
+    "price": "السعر",
+    "stock": "المخزون",
+    "status": "الحالة",
+    "category": "التصنيف",
+    "slug": "المعرّف",
+    "description": "الوصف",
+    "orders": "الطلبات",
+    "spent": "الإنفاق",
+    "productsCount": "المنتجات",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "recentOrders": "أحدث الطلبات",
+    "customer": "العميل",
+    "total": "الإجمالي",
+    "stats": {
+      "products": "المنتجات",
+      "orders": "الطلبات",
+      "customers": "العملاء",
+      "revenue": "الإيرادات"
+    },
+    "login": {
+      "title": "دخول الأدمن",
+      "subtitle": "الوصول إلى لوحة تحكم Next Shop",
+      "submit": "تسجيل الدخول"
+    },
+    "productsPage": {
+      "title": "المنتجات",
+      "subtitle": "إدارة الكتالوج",
+      "add": "إضافة منتج"
+    },
+    "addProduct": {
+      "title": "إضافة منتج",
+      "subtitle": "إنشاء عنصر جديد في الكتالوج"
+    },
+    "categoriesPage": {
+      "title": "التصنيفات",
+      "subtitle": "تنظيم المنتجات",
+      "add": "إضافة تصنيف"
+    },
+    "addCategory": {
+      "title": "إضافة تصنيف",
+      "subtitle": "إنشاء تصنيف جديد"
+    },
+    "customersPage": {
+      "title": "العملاء",
+      "subtitle": "من يتسوق معك"
+    },
+    "usersPage": {
+      "title": "المستخدمون",
+      "subtitle": "حسابات الإدارة والفريق",
+      "add": "إضافة مستخدم"
+    },
+    "addUser": {
+      "title": "إضافة مستخدم",
+      "subtitle": "دعوة عضو للفريق"
+    },
+    "dashboardPage": {
+      "title": "لوحة التحكم",
+      "subtitle": "نظرة عامة على متجرك"
+    }
+  },
   "Auth": {
     "login": {
       "title": "مرحباً بعودتك",
