@@ -76,13 +76,13 @@ export default async function CartPage() {
           >
             {t("continue")}
           </Link>
-          <button
-            type="button"
+          <Link
+            href="/checkout"
             className="inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
           >
             {t("checkout")}
             <ArrowRight className="size-4 rtl:rotate-180" aria-hidden />
-          </button>
+          </Link>
         </div>
       </div>
     </div>

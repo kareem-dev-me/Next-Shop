@@ -1,5 +1,6 @@
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { mockProducts } from "@/lib/mock-products";
 
@@ -35,9 +36,9 @@ export default async function HomePage() {
       </svg>
 
       <section className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-start px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-        <div className="mb-6 inline-flex items-center gap-2 text-[#22C55E]">
-          <Star className="size-5 fill-current" aria-hidden />
-          <span className="text-sm font-semibold tracking-wide">
+        <div className="mb-6 inline-flex items-center gap-2">
+          <Image src="/icon.png" alt="" width={28} height={28} />
+          <span className="text-sm font-semibold tracking-wide text-[#1A1A1A]">
             {tCommon("brand")}
           </span>
         </div>

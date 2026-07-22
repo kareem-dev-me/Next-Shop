@@ -32,6 +32,26 @@
     "continue": "Continue shopping",
     "empty": "Your cart is empty"
   },
+  "Checkout": {
+    "title": "Checkout",
+    "subtitle": "Enter your details to complete the order.",
+    "contact": "Contact",
+    "email": "Email",
+    "phone": "Phone",
+    "shipping": "Shipping address",
+    "fullName": "Full name",
+    "line1": "Address",
+    "city": "City",
+    "postal": "Postal code",
+    "country": "Country",
+    "orderSummary": "Order summary",
+    "subtotal": "Subtotal",
+    "shippingFee": "Shipping",
+    "total": "Total",
+    "placeOrder": "Place order",
+    "backToCart": "Back to cart",
+    "qty": "Qty"
+  },
   "Profile": {
     "title": "Your profile",
     "subtitle": "Account details and preferences.",

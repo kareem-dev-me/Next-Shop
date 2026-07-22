@@ -1,5 +1,5 @@
-import { Star } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
 export default async function Footer() {
@@ -16,10 +16,7 @@ export default async function Footer() {
               href="/"
               className="inline-flex items-center gap-2 transition-opacity hover:opacity-80"
             >
-              <Star
-                className="size-5 fill-[#22C55E] text-[#22C55E]"
-                aria-hidden
-              />
+              <Image src="/icon.png" alt="" width={28} height={28} />
               <span className="text-lg font-extrabold tracking-tight text-[#1A1A1A]">
                 {tCommon("brand")}
               </span>

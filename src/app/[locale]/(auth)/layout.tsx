@@ -1,6 +1,6 @@
-import { Star } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -57,10 +57,7 @@ export default async function AuthLayout({
           href="/"
           className="mb-10 flex items-center justify-center gap-2 transition-opacity hover:opacity-80"
         >
-          <Star
-            className="size-5 fill-[#22C55E] text-[#22C55E]"
-            aria-hidden
-          />
+          <Image src="/icon.png" alt="" width={36} height={36} />
           <span className="text-2xl font-extrabold tracking-tight text-[#1A1A1A]">
             {t("brand")}
           </span>

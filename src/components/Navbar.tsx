@@ -1,5 +1,6 @@
-import { ShoppingCart, Star, User } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import LocaleSwitcher from "./LocaleSwitcher";
 
@@ -14,7 +15,7 @@ export default async function Navbar() {
           href="/"
           className="flex shrink-0 items-center gap-2 transition-opacity hover:opacity-80"
         >
-          <Star className="size-5 fill-[#22C55E] text-[#22C55E]" aria-hidden />
+          <Image src="/icon.png" alt="" width={32} height={32} />
           <span className="text-lg font-extrabold tracking-tight text-[#1A1A1A]">
             {tCommon("brand")}
           </span>
@@ -27,10 +28,7 @@ export default async function Navbar() {
           <Link href="/cart" className="transition-colors hover:text-[#1A1A1A]">
             {t("cart")}
           </Link>
-          <Link
-            href="/profile"
-            className="transition-colors hover:text-[#1A1A1A]"
-          >
+          <Link href="/profile" className="transition-colors hover:text-[#1A1A1A]">
             {t("profile")}
           </Link>
         </div>
