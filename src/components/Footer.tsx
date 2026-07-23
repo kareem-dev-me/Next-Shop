@@ -16,7 +16,13 @@ export default async function Footer() {
               href="/"
               className="inline-flex items-center gap-2 transition-opacity hover:opacity-80"
             >
-              <Image src="/icon.png" alt="" width={28} height={28} />
+              <Image
+                src="/icon.png"
+                alt=""
+                width={28}
+                height={28}
+                className="h-auto w-auto"
+              />
               <span className="text-lg font-extrabold tracking-tight text-[#1A1A1A]">
                 {tCommon("brand")}
               </span>

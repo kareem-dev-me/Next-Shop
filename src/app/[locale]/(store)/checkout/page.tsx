@@ -37,7 +37,13 @@ export default async function CheckoutPage() {
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-14">
       <div className="mb-8 flex items-center gap-2">
-        <Image src="/icon.png" alt="" width={32} height={32} />
+        <Image
+          src="/icon.png"
+          alt=""
+          width={32}
+          height={32}
+          className="h-auto w-auto"
+        />
         <span className="text-lg font-extrabold tracking-tight text-[#1A1A1A]">
           {tCommon("brand")}
         </span>

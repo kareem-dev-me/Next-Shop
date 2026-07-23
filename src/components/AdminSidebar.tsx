@@ -25,7 +25,13 @@ export default async function AdminSidebar() {
   return (
     <aside className="flex w-64 shrink-0 flex-col border-e border-gray-100 bg-white">
       <div className="flex items-center gap-2 border-b border-gray-100 px-5 py-5">
-        <Image src="/icon.png" alt="" width={28} height={28} />
+        <Image
+          src="/icon.png"
+          alt=""
+          width={28}
+          height={28}
+          className="h-auto w-auto"
+        />
         <span className="text-sm font-extrabold tracking-tight text-[#1A1A1A]">
           {t("brand")}
         </span>

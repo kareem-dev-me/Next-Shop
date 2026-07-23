@@ -18,7 +18,13 @@ export default async function Navbar() {
           href="/"
           className="flex shrink-0 items-center gap-2 transition-opacity hover:opacity-80"
         >
-          <Image src="/icon.png" alt="" width={32} height={32} />
+          <Image
+            src="/icon.png"
+            alt=""
+            width={32}
+            height={32}
+            className="h-auto w-auto"
+          />
           <span className="text-lg font-extrabold tracking-tight text-[#1A1A1A]">
             {tCommon("brand")}
           </span>

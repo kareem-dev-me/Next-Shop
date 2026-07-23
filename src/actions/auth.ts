@@ -2,7 +2,7 @@
 
 import { AuthError } from "next-auth";
 import { getLocale } from "next-intl/server";
-import { auth, signIn, signOut } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { redirect } from "@/i18n/navigation";
 import prisma from "@/lib/prisma";
 import { hashPassword } from "@/lib/password";
@@ -29,17 +29,19 @@ export async function loginAction(
   const href = redirectTo.startsWith("/") ? redirectTo : "/";
 
   try {
-    await signIn("credentials", {
+    await signIn("user-signin", {
       email: parsed.data.email,
       password: parsed.data.password,
       redirect: false,
     });
+
   } catch (error) {
     if (error instanceof AuthError) {
       return { error: "Invalid email or password" };
     }
     throw error;
   }
+
 
   const locale = await getLocale();
   redirect({ href, locale });
@@ -60,7 +62,7 @@ export async function adminLoginAction(
   }
 
   try {
-    await signIn("credentials", {
+    await signIn("admin-signin", {
       email: parsed.data.email,
       password: parsed.data.password,
       redirect: false,
@@ -70,12 +72,6 @@ export async function adminLoginAction(
       return { error: "Invalid email or password" };
     }
     throw error;
-  }
-
-  const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") {
-    await signOut({ redirect: false });
-    return { error: "Admin access required" };
   }
 
   const locale = await getLocale();
@@ -125,7 +121,7 @@ export async function signupAction(
   }
 
   try {
-    await signIn("credentials", {
+    await signIn("user-signin", {
       email,
       password,
       redirect: false,

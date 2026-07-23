@@ -3,33 +3,21 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { mockProducts } from "@/lib/mock-products";
+import { auth } from "@/auth";
 
 export default async function HomePage() {
   const t = await getTranslations("Home");
   const tCommon = await getTranslations("Common");
   const tProducts = await getTranslations("Products");
 
+  const session = await auth();
+
   return (
     <div className="relative flex flex-1 flex-col bg-white">
-      <svg
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] w-full text-gray-200"
-      >
+      <svg aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] w-full text-gray-200">
         <defs>
-          <pattern
-            id="home-waves"
-            width="120"
-            height="40"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M0 20 Q30 5 60 20 T120 20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-              strokeDasharray="4 6"
-              opacity="0.4"
-            />
+          <pattern id="home-waves" width="120" height="40" patternUnits="userSpaceOnUse">
+            <path d="M0 20 Q30 5 60 20 T120 20" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 6" opacity="0.4" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#home-waves)" />
@@ -37,18 +25,12 @@ export default async function HomePage() {
 
       <section className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-start px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
         <div className="mb-6 inline-flex items-center gap-2">
-          <Image src="/icon.png" alt="" width={28} height={28} />
-          <span className="text-sm font-semibold tracking-wide text-[#1A1A1A]">
-            {tCommon("brand")}
-          </span>
+          <Image src="/icon.png" alt="" width={28} height={28} className="h-auto w-auto" />
+          <span className="text-sm font-semibold tracking-wide text-[#1A1A1A]">{tCommon("brand")}</span>
         </div>
 
-        <h1 className="max-w-2xl text-4xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-5xl lg:text-6xl">
-          {t("headline")}
-        </h1>
-        <p className="mt-4 max-w-lg text-base leading-relaxed text-[#6B7280] sm:text-lg">
-          {t("subtitle")}
-        </p>
+        <h1 className="max-w-2xl text-4xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-5xl lg:text-6xl">{t("headline")}</h1>
+        <p className="mt-4 max-w-lg text-base leading-relaxed text-[#6B7280] sm:text-lg">{t("subtitle")}</p>
 
         <div className="mt-8 flex flex-wrap gap-3">
           <a
@@ -58,22 +40,19 @@ export default async function HomePage() {
             {t("shopCta")}
             <ArrowRight className="size-4 rtl:rotate-180" aria-hidden />
           </a>
-          <Link
-            href="/login"
-            className="inline-flex items-center rounded-full bg-[#F3F4F6] px-6 py-3 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
-          >
-            {t("loginCta")}
-          </Link>
+          {!session?.user && (
+            <Link
+              href="/login"
+              className="inline-flex items-center rounded-full bg-[#F3F4F6] px-6 py-3 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
+            >
+              {t("loginCta")}
+            </Link>
+          )}
         </div>
       </section>
 
-      <section
-        id="featured"
-        className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 sm:px-6"
-      >
-        <h2 className="text-2xl font-extrabold tracking-tight text-[#1A1A1A]">
-          {t("featured")}
-        </h2>
+      <section id="featured" className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 sm:px-6">
+        <h2 className="text-2xl font-extrabold tracking-tight text-[#1A1A1A]">{t("featured")}</h2>
         <p className="mt-2 text-sm text-[#6B7280]">{t("featuredSubtitle")}</p>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -83,10 +62,7 @@ export default async function HomePage() {
               href={`/${product.slug}`}
               className="group flex flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition-colors hover:border-gray-200"
             >
-              <div
-                className="flex aspect-square items-center justify-center"
-                style={{ backgroundColor: `${product.accent}14` }}
-              >
+              <div className="flex aspect-square items-center justify-center" style={{ backgroundColor: `${product.accent}14` }}>
                 <div
                   className="size-24 rounded-full opacity-90 transition-transform group-hover:scale-105"
                   style={{ backgroundColor: product.accent }}
@@ -96,12 +72,8 @@ export default async function HomePage() {
                 <span className="inline-flex w-fit rounded-full bg-[#F3F4F6] px-2.5 py-0.5 text-xs font-medium text-[#6B7280]">
                   {tProducts(product.categoryKey)}
                 </span>
-                <h3 className="font-bold text-[#1A1A1A]">
-                  {tProducts(product.nameKey)}
-                </h3>
-                <p className="mt-auto text-sm font-semibold text-[#1A1A1A]">
-                  ${product.price}
-                </p>
+                <h3 className="font-bold text-[#1A1A1A]">{tProducts(product.nameKey)}</h3>
+                <p className="mt-auto text-sm font-semibold text-[#1A1A1A]">${product.price}</p>
               </div>
             </Link>
           ))}

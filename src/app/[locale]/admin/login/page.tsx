@@ -15,7 +15,13 @@ export default async function AdminLoginPage() {
           href="/admin"
           className="mb-10 flex items-center justify-center gap-2 transition-opacity hover:opacity-80"
         >
-          <Image src="/icon.png" alt="" width={36} height={36} />
+          <Image
+            src="/icon.png"
+            alt=""
+            width={36}
+            height={36}
+            className="h-auto w-auto"
+          />
           <span className="text-xl font-extrabold tracking-tight text-[#1A1A1A]">
             {tAdmin("brand")}
           </span>
