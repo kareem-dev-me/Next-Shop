@@ -31,7 +31,12 @@ export {
   type UpdateCategoryInput,
 } from "./category";
 
-export { addUserSchema, type AddUserInput } from "./user";
+export {
+  addUserSchema,
+  updateUserSchema,
+  type AddUserInput,
+  type UpdateUserInput,
+} from "./user";
 
 export {
   addCustomerSchema,

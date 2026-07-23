@@ -181,11 +181,21 @@
     "usersPage": {
       "title": "Users",
       "subtitle": "Admin and staff accounts",
-      "add": "Add user"
+      "add": "Add user",
+      "empty": "No admin users yet. Add your first user.",
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {current} of {total}",
+      "deleteConfirm": "Delete this admin user? This cannot be undone."
     },
     "addUser": {
       "title": "Add user",
       "subtitle": "Invite a team member"
+    },
+    "editUser": {
+      "title": "Edit user",
+      "subtitle": "Update admin account details",
+      "passwordHint": "Leave blank to keep the current password"
     },
     "dashboardPage": {
       "title": "Dashboard",
