@@ -27,9 +27,14 @@ export {
 
 export {
   listCategories,
+  getCategoriesPage,
   getCategoryById,
+  getCategoryBySlug,
   createCategory,
   updateCategory,
   deleteCategory,
   type CategoryOption,
+  type CategoryWithCount,
+  type CreateCategoryInput,
+  type UpdateCategoryInput,
 } from "./categories";

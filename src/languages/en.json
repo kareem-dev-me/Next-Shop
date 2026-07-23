@@ -144,11 +144,20 @@
     "categoriesPage": {
       "title": "Categories",
       "subtitle": "Organize your products",
-      "add": "Add category"
+      "add": "Add category",
+      "empty": "No categories yet. Add your first category.",
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {current} of {total}",
+      "deleteConfirm": "Delete this category? This cannot be undone."
     },
     "addCategory": {
       "title": "Add category",
       "subtitle": "Create a new category"
+    },
+    "editCategory": {
+      "title": "Edit category",
+      "subtitle": "Update category details"
     },
     "customersPage": {
       "title": "Customers",

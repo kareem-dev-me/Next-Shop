@@ -144,11 +144,20 @@
     "categoriesPage": {
       "title": "التصنيفات",
       "subtitle": "تنظيم المنتجات",
-      "add": "إضافة تصنيف"
+      "add": "إضافة تصنيف",
+      "empty": "لا توجد تصنيفات بعد. أضف أول تصنيف.",
+      "previous": "السابق",
+      "next": "التالي",
+      "pageOf": "صفحة {current} من {total}",
+      "deleteConfirm": "حذف هذا التصنيف؟ لا يمكن التراجع عن ذلك."
     },
     "addCategory": {
       "title": "إضافة تصنيف",
       "subtitle": "إنشاء تصنيف جديد"
+    },
+    "editCategory": {
+      "title": "تعديل التصنيف",
+      "subtitle": "تحديث تفاصيل التصنيف"
     },
     "customersPage": {
       "title": "العملاء",

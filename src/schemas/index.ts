@@ -24,6 +24,11 @@ export {
 } from "./product";
 
 
-export { addCategorySchema, type AddCategoryInput } from "./category";
+export {
+  addCategorySchema,
+  updateCategorySchema,
+  type AddCategoryInput,
+  type UpdateCategoryInput,
+} from "./category";
 
 export { addUserSchema, type AddUserInput } from "./user";

@@ -7,4 +7,7 @@ export const addCategorySchema = z.object({
   description: z.string().optional(),
 });
 
+export const updateCategorySchema = addCategorySchema;
+
 export type AddCategoryInput = z.infer<typeof addCategorySchema>;
+export type UpdateCategoryInput = z.infer<typeof updateCategorySchema>;
