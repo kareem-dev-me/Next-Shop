@@ -8,7 +8,7 @@ export default function LogoutButton({ label }: { label: string }) {
     <form action={logoutAction}>
       <button
         type="submit"
-        className="inline-flex items-center gap-2 rounded-full bg-[#F3F4F6] px-3.5 py-2 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
+        className="inline-flex items-center gap-2 rounded-full bg-[#F3F4F6] px-3.5 py-2 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200 cursor-pointer"
       >
         <span className="hidden sm:inline">{label}</span>
         <LogOut className="size-4" aria-hidden />

@@ -89,6 +89,7 @@
     "users": "Users",
     "add": "Add",
     "edit": "Edit",
+    "delete": "Delete",
     "name": "Name",
     "email": "Email",
     "password": "Password",
@@ -121,11 +122,24 @@
     "productsPage": {
       "title": "Products",
       "subtitle": "Manage your catalog",
-      "add": "Add product"
+      "add": "Add product",
+      "empty": "No products yet. Add your first product.",
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {current} of {total}",
+      "deleteConfirm": "Delete this product? This cannot be undone."
     },
     "addProduct": {
       "title": "Add product",
-      "subtitle": "Create a new catalog item"
+      "subtitle": "Create a new catalog item",
+      "image": "Image URL",
+      "imagePlaceholder": "https://example.com/image.jpg",
+      "selectCategory": "Select a category",
+      "noCategories": "No categories found. Seed categories first."
+    },
+    "editProduct": {
+      "title": "Edit product",
+      "subtitle": "Update catalog item details"
     },
     "categoriesPage": {
       "title": "Categories",

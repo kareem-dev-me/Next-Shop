@@ -22,3 +22,69 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes confirm-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confirm-backdrop-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes confirm-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes confirm-panel-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+.confirm-backdrop-enter {
+  animation: confirm-backdrop-in 200ms ease-out forwards;
+}
+
+.confirm-backdrop-exit {
+  animation: confirm-backdrop-out 180ms ease-in forwards;
+}
+
+.confirm-panel-enter {
+  animation: confirm-panel-in 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.confirm-panel-exit {
+  animation: confirm-panel-out 180ms ease-in forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confirm-backdrop-enter,
+  .confirm-backdrop-exit,
+  .confirm-panel-enter,
+  .confirm-panel-exit {
+    animation: none !important;
+  }
+}
+

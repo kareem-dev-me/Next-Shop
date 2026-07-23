@@ -89,6 +89,7 @@
     "users": "المستخدمون",
     "add": "إضافة",
     "edit": "تعديل",
+    "delete": "حذف",
     "name": "الاسم",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
@@ -121,11 +122,24 @@
     "productsPage": {
       "title": "المنتجات",
       "subtitle": "إدارة الكتالوج",
-      "add": "إضافة منتج"
+      "add": "إضافة منتج",
+      "empty": "لا توجد منتجات بعد. أضف أول منتج.",
+      "previous": "السابق",
+      "next": "التالي",
+      "pageOf": "صفحة {current} من {total}",
+      "deleteConfirm": "حذف هذا المنتج؟ لا يمكن التراجع عن ذلك."
     },
     "addProduct": {
       "title": "إضافة منتج",
-      "subtitle": "إنشاء عنصر جديد في الكتالوج"
+      "subtitle": "إنشاء عنصر جديد في الكتالوج",
+      "image": "رابط الصورة",
+      "imagePlaceholder": "https://example.com/image.jpg",
+      "selectCategory": "اختر تصنيفاً",
+      "noCategories": "لا توجد تصنيفات. قم ببذر التصنيفات أولاً."
+    },
+    "editProduct": {
+      "title": "تعديل المنتج",
+      "subtitle": "تحديث تفاصيل عنصر الكتالوج"
     },
     "categoriesPage": {
       "title": "التصنيفات",

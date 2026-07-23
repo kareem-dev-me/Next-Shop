@@ -16,7 +16,13 @@ export {
 
 export { checkoutSchema, type CheckoutInput } from "./checkout";
 
-export { addProductSchema, type AddProductInput } from "./product";
+export {
+  addProductSchema,
+  updateProductSchema,
+  type AddProductInput,
+  type UpdateProductInput,
+} from "./product";
+
 
 export { addCategorySchema, type AddCategoryInput } from "./category";
 
