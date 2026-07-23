@@ -161,7 +161,22 @@
     },
     "customersPage": {
       "title": "العملاء",
-      "subtitle": "من يتسوق معك"
+      "subtitle": "من يتسوق معك",
+      "add": "إضافة عميل",
+      "empty": "لا يوجد عملاء بعد. أضف أول عميل.",
+      "previous": "السابق",
+      "next": "التالي",
+      "pageOf": "صفحة {current} من {total}",
+      "deleteConfirm": "حذف هذا العميل؟ لا يمكن التراجع عن ذلك."
+    },
+    "addCustomer": {
+      "title": "إضافة عميل",
+      "subtitle": "إنشاء حساب متسوق جديد"
+    },
+    "editCustomer": {
+      "title": "تعديل العميل",
+      "subtitle": "تحديث بيانات العميل",
+      "passwordHint": "اتركه فارغاً للإبقاء على كلمة المرور الحالية"
     },
     "usersPage": {
       "title": "المستخدمون",

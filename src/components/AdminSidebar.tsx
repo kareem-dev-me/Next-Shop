@@ -10,14 +10,32 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import LocaleSwitcher from "./LocaleSwitcher";
+import NavLink from "./NavLink";
 
 const navItems = [
-  { href: "/admin", labelKey: "dashboard", icon: LayoutDashboard },
-  { href: "/admin/products", labelKey: "products", icon: Package },
-  { href: "/admin/categories", labelKey: "categories", icon: FolderTree },
-  { href: "/admin/customers", labelKey: "customers", icon: UserSquare2 },
-  { href: "/admin/users", labelKey: "users", icon: Users },
+  { href: "/admin", labelKey: "dashboard", icon: LayoutDashboard, exact: true },
+  { href: "/admin/products", labelKey: "products", icon: Package, exact: false },
+  {
+    href: "/admin/categories",
+    labelKey: "categories",
+    icon: FolderTree,
+    exact: false,
+  },
+  {
+    href: "/admin/customers",
+    labelKey: "customers",
+    icon: UserSquare2,
+    exact: false,
+  },
+  { href: "/admin/users", labelKey: "users", icon: Users, exact: false },
 ] as const;
+
+
+const linkClassName =
+  "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-[#6B7280] transition-colors hover:bg-[#F3F4F6] hover:text-[#1A1A1A]";
+
+const activeLinkClassName =
+  "bg-[#1A1A1A] font-semibold text-white hover:bg-[#1A1A1A]! hover:text-white!";
 
 export default async function AdminSidebar() {
   const t = await getTranslations("Admin");
@@ -38,15 +56,17 @@ export default async function AdminSidebar() {
       </div>
 
       <nav className="flex flex-1 flex-col gap-1 p-3">
-        {navItems.map(({ href, labelKey, icon: Icon }) => (
-          <Link
+        {navItems.map(({ href, labelKey, icon: Icon, exact }) => (
+          <NavLink
             key={href}
             href={href}
-            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-[#6B7280] transition-colors hover:bg-[#F3F4F6] hover:text-[#1A1A1A]"
+            exact={exact}
+            className={linkClassName}
+            activeClassName={activeLinkClassName}
           >
             <Icon className="size-4 shrink-0" aria-hidden />
             {t(labelKey)}
-          </Link>
+          </NavLink>
         ))}
       </nav>
 

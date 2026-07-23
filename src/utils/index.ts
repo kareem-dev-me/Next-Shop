@@ -38,3 +38,15 @@ export {
   type CreateCategoryInput,
   type UpdateCategoryInput,
 } from "./categories";
+
+export {
+  getCustomersPage,
+  getCustomerById,
+  getCustomerByEmail,
+  createCustomer,
+  updateCustomer,
+  deleteCustomer,
+  type CustomerListItem,
+  type CreateCustomerInput,
+  type UpdateCustomerInput,
+} from "./customers";

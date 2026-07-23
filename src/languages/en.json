@@ -161,7 +161,22 @@
     },
     "customersPage": {
       "title": "Customers",
-      "subtitle": "People who shop with you"
+      "subtitle": "People who shop with you",
+      "add": "Add customer",
+      "empty": "No customers yet. Add your first customer.",
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {current} of {total}",
+      "deleteConfirm": "Delete this customer? This cannot be undone."
+    },
+    "addCustomer": {
+      "title": "Add customer",
+      "subtitle": "Create a new shopper account"
+    },
+    "editCustomer": {
+      "title": "Edit customer",
+      "subtitle": "Update customer details",
+      "passwordHint": "Leave blank to keep the current password"
     },
     "usersPage": {
       "title": "Users",
