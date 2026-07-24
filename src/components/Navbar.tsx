@@ -43,6 +43,7 @@ export default async function Navbar() {
             userName={session?.user?.name || session?.user?.email}
             labels={{
               profile: t("profile"),
+              addresses: t("addresses"),
               login: t("login"),
               logout: t("logout"),
               account: t("account"),

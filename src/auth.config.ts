@@ -39,9 +39,11 @@ export const authConfig = {
         pathWithoutLocale === "/profile" ||
         pathWithoutLocale === "/checkout" ||
         pathWithoutLocale === "/cart" ||
+        pathWithoutLocale === "/addresses" ||
         pathWithoutLocale.startsWith("/profile/") ||
         pathWithoutLocale.startsWith("/checkout/") ||
-        pathWithoutLocale.startsWith("/cart/");
+        pathWithoutLocale.startsWith("/cart/") ||
+        pathWithoutLocale.startsWith("/addresses/");
 
       if ((isAuthPage || isAdminLogin) && isLoggedIn) {
         return redirectTo(role === "ADMIN" ? "/admin" : "/", nextUrl);

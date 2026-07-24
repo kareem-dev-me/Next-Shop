@@ -12,6 +12,7 @@ type Props = {
   userName?: string | null;
   labels: {
     profile: string;
+    addresses: string;
     login: string;
     logout: string;
     account: string;
@@ -84,6 +85,15 @@ export default function NavbarMenu({ loggedIn, userName, labels }: Props) {
                 activeClassName="bg-[#F3F4F6] font-semibold"
               >
                 {labels.profile}
+              </NavLink>
+              <NavLink
+                href="/addresses"
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className="block rounded-xl px-3 py-2.5 text-sm font-medium text-[#1A1A1A] transition-colors hover:bg-[#F3F4F6]"
+                activeClassName="bg-[#F3F4F6] font-semibold"
+              >
+                {labels.addresses}
               </NavLink>
               <div className="my-1 border-t border-gray-100" />
               <div className="px-2 py-2">

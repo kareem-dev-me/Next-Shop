@@ -89,3 +89,13 @@ export {
   type CartLineProduct,
   type CartView,
 } from "./cart";
+
+export {
+  listAddresses,
+  getAddressForUser,
+  createAddress,
+  updateAddress,
+  setDefaultAddress,
+  deleteAddress,
+  type AddressRecord,
+} from "./addresses";

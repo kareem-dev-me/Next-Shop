@@ -49,3 +49,8 @@ export {
   updateProfileSchema,
   type UpdateProfileInput,
 } from "./profile";
+
+export {
+  addressSchema,
+  type AddressInput,
+} from "./address";

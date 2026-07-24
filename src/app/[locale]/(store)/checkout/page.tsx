@@ -1,8 +1,10 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { auth } from "@/auth";
+import CheckoutAddressList from "@/components/checkout/CheckoutAddressList";
 import { Link, redirect } from "@/i18n/navigation";
+import { listAddresses } from "@/utils/addresses";
 import { getCartForUser } from "@/utils/cart";
 
 const inputClassName =
@@ -16,6 +18,7 @@ export default async function CheckoutPage() {
   const t = await getTranslations("Checkout");
   const tCommon = await getTranslations("Common");
   const tCart = await getTranslations("Cart");
+  const tAddresses = await getTranslations("Addresses");
   const locale = await getLocale();
   const session = await auth();
   const userId = session?.user?.id;
@@ -24,7 +27,10 @@ export default async function CheckoutPage() {
     redirect({ href: "/login", locale });
   }
 
-  const cart = await getCartForUser(userId!);
+  const [cart, addresses] = await Promise.all([
+    getCartForUser(userId!),
+    listAddresses(userId!),
+  ]);
   const { items, subtotal } = cart;
 
   if (items.length === 0) {
@@ -32,6 +38,8 @@ export default async function CheckoutPage() {
   }
 
   const total = subtotal + SHIPPING_FEE;
+  const selectedAddressId =
+    addresses.find((address) => address.isDefault)?.id ?? addresses[0]?.id;
 
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-14">
@@ -87,12 +95,6 @@ export default async function CheckoutPage() {
                   className={inputClassName}
                 />
               </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-[#1A1A1A]">{t("shipping")}</h2>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label htmlFor="fullName" className={labelClassName}>
                   {t("fullName")}
@@ -107,59 +109,41 @@ export default async function CheckoutPage() {
                   className={inputClassName}
                 />
               </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="line1" className={labelClassName}>
-                  {t("line1")}
-                </label>
-                <input
-                  id="line1"
-                  name="line1"
-                  type="text"
-                  autoComplete="street-address"
-                  required
-                  className={inputClassName}
-                />
-              </div>
-              <div>
-                <label htmlFor="city" className={labelClassName}>
-                  {t("city")}
-                </label>
-                <input
-                  id="city"
-                  name="city"
-                  type="text"
-                  autoComplete="address-level2"
-                  required
-                  className={inputClassName}
-                />
-              </div>
-              <div>
-                <label htmlFor="postal" className={labelClassName}>
-                  {t("postal")}
-                </label>
-                <input
-                  id="postal"
-                  name="postal"
-                  type="text"
-                  autoComplete="postal-code"
-                  required
-                  className={inputClassName}
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="country" className={labelClassName}>
-                  {t("country")}
-                </label>
-                <input
-                  id="country"
-                  name="country"
-                  type="text"
-                  autoComplete="country-name"
-                  required
-                  className={inputClassName}
-                />
-              </div>
             </div>
+          </section>
+
+          <section>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h2 className="text-lg font-bold text-[#1A1A1A]">
+                {t("shipping")}
+              </h2>
+              <Link
+                href="/addresses"
+                className="text-sm font-medium text-[#22C55E] transition-colors hover:text-green-600"
+              >
+                {t("manageAddresses")}
+              </Link>
+            </div>
+
+            {addresses.length === 0 || !selectedAddressId ? (
+              <div className="mt-4 flex flex-col items-center gap-4 rounded-3xl border border-dashed border-gray-200 py-10 text-center">
+                <MapPin className="size-7 text-[#9CA3AF]" aria-hidden />
+                <p className="text-sm text-[#6B7280]">{t("noAddresses")}</p>
+                <Link
+                  href="/addresses/add"
+                  className="inline-flex items-center rounded-full bg-[#1A1A1A] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-black"
+                >
+                  {tAddresses("add")}
+                </Link>
+              </div>
+            ) : (
+              <CheckoutAddressList
+                addresses={addresses}
+                initialSelectedId={selectedAddressId}
+                defaultLabel={tAddresses("default")}
+                legend={t("selectAddress")}
+              />
+            )}
           </section>
         </div>
 
@@ -216,7 +200,8 @@ export default async function CheckoutPage() {
 
           <button
             type="submit"
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#1A1A1A] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-black"
+            disabled={addresses.length === 0}
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#1A1A1A] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:opacity-50"
           >
             {t("placeOrder")}
             <ArrowRight className="size-4 rtl:rotate-180" aria-hidden />

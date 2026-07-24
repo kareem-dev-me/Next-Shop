@@ -1,4 +1,4 @@
-import { ShoppingCart } from "lucide-react";
+import { MapPin, ShoppingCart } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { auth } from "@/auth";
 import { Link, redirect } from "@/i18n/navigation";
@@ -52,7 +52,14 @@ export default async function ProfilePage() {
           }}
         />
 
-        <div className="mt-8 border-t border-gray-100 pt-6">
+        <div className="mt-8 flex flex-col gap-3 border-t border-gray-100 pt-6">
+          <Link
+            href="/addresses"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#F3F4F6] px-5 py-3 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
+          >
+            <MapPin className="size-4" aria-hidden />
+            {t("manageAddresses")}
+          </Link>
           <Link
             href="/cart"
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#F3F4F6] px-5 py-3 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
