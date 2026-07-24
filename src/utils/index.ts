@@ -28,6 +28,8 @@ export {
 
 export {
   listCategories,
+  listStoreCategories,
+  getStoreCategoryBySlug,
   getCategoriesPage,
   getCategoryById,
   getCategoryBySlug,
@@ -36,6 +38,8 @@ export {
   deleteCategory,
   type CategoryOption,
   type CategoryWithCount,
+  type StoreCategory,
+  type StoreCategoryWithProducts,
   type CreateCategoryInput,
   type UpdateCategoryInput,
 } from "./categories";

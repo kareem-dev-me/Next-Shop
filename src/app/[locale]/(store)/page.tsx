@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { auth } from "@/auth";
+import { listStoreCategories } from "@/utils/categories";
 import { getFeaturedProducts } from "@/utils/products";
 
 const HERO_IMAGE =
@@ -11,8 +12,12 @@ const HERO_IMAGE =
 export default async function HomePage() {
   const t = await getTranslations("Home");
   const tCommon = await getTranslations("Common");
+  const tCategories = await getTranslations("Categories");
   const session = await auth();
-  const products = await getFeaturedProducts();
+  const [products, categories] = await Promise.all([
+    getFeaturedProducts(),
+    listStoreCategories(),
+  ]);
 
   return (
     <div className="relative flex flex-1 flex-col bg-white">
@@ -63,6 +68,49 @@ export default async function HomePage() {
             )}
           </div>
         </div>
+      </section>
+
+      <section className="relative z-10 mx-auto w-full max-w-6xl px-4 pt-16 sm:px-6 sm:pt-20">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-extrabold tracking-tight text-[#1A1A1A]">
+              {t("categories")}
+            </h2>
+            <p className="mt-2 text-sm text-[#6B7280]">
+              {t("categoriesSubtitle")}
+            </p>
+          </div>
+          <Link
+            href="/categories"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#22C55E] transition-colors hover:text-green-600"
+          >
+            {t("viewAllCategories")}
+            <ArrowRight className="size-4 rtl:rotate-180" aria-hidden />
+          </Link>
+        </div>
+
+        {categories.length === 0 ? (
+          <p className="mt-8 rounded-3xl border border-dashed border-gray-200 py-12 text-center text-sm text-[#6B7280]">
+            {tCategories("empty")}
+          </p>
+        ) : (
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {categories.slice(0, 4).map((category) => (
+              <Link
+                key={category.id}
+                href={`/categories/${category.slug}`}
+                className="rounded-3xl border border-gray-100 bg-white p-5 transition-colors hover:border-gray-200"
+              >
+                <h3 className="font-bold text-[#1A1A1A]">{category.name}</h3>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#9CA3AF]">
+                  {tCategories("productsCount", {
+                    count: category.productsCount,
+                  })}
+                </p>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       <section

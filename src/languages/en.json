@@ -6,6 +6,7 @@
   "Nav": {
     "home": "Home",
     "cart": "Cart",
+    "categories": "Categories",
     "login": "Log in",
     "logout": "Log out",
     "profile": "Profile",
@@ -15,14 +16,19 @@
   "Footer": {
     "home": "Home",
     "cart": "Cart",
+    "categories": "Categories",
     "login": "Log in",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "profile": "Profile"
   },
   "Home": {
     "headline": "Sound that moves with you",
     "subtitle": "Curated gear for everyday listening — clean design, clear audio.",
     "shopCta": "Shop now",
     "loginCta": "Log in",
+    "categories": "Shop by category",
+    "categoriesSubtitle": "Browse the collections that fit your setup.",
+    "viewAllCategories": "View all",
     "featured": "Featured picks",
     "featuredSubtitle": "Hand-picked products ready for your next haul.",
     "noProducts": "No products available yet."
@@ -104,6 +110,14 @@
     "addToCart": "Add to cart",
     "outOfStock": "Out of stock",
     "from": "From"
+  },
+  "Categories": {
+    "title": "Categories",
+    "subtitle": "Explore every collection in the shop.",
+    "empty": "No categories yet.",
+    "back": "All categories",
+    "noProducts": "No products in this category yet.",
+    "productsCount": "{count, plural, =0 {No products} one {# product} other {# products}}"
   },
   "Products": {
     "audio": "Audio",

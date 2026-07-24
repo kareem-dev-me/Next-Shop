@@ -49,6 +49,55 @@ export async function getCategoryBySlug(slug: string) {
   return categoryCrud.findUnique<Category>({ where: { slug } });
 }
 
+export type StoreCategory = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  productsCount: number;
+};
+
+export type StoreCategoryWithProducts = Prisma.CategoryGetPayload<{
+  include: {
+    products: {
+      include: { category: true };
+    };
+  };
+}>;
+
+export async function listStoreCategories(): Promise<StoreCategory[]> {
+  const categories = await prisma.category.findMany({
+    orderBy: { name: "asc" },
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+      description: true,
+      _count: { select: { products: true } },
+    },
+  });
+
+  return categories.map((category) => ({
+    id: category.id,
+    name: category.name,
+    slug: category.slug,
+    description: category.description,
+    productsCount: category._count.products,
+  }));
+}
+
+export async function getStoreCategoryBySlug(slug: string) {
+  return prisma.category.findUnique({
+    where: { slug },
+    include: {
+      products: {
+        include: { category: true },
+        orderBy: { createdAt: "desc" },
+      },
+    },
+  });
+}
+
 export async function createCategory(data: CreateCategoryInput) {
   return categoryCrud.create<Category>({
     name: data.name,

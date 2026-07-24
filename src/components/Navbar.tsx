@@ -31,6 +31,13 @@ export default async function Navbar() {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
+            href="/categories"
+            className="hidden text-sm font-semibold text-[#6B7280] transition-colors hover:text-[#1A1A1A] md:inline"
+          >
+            {t("categories")}
+          </Link>
+
+          <Link
             href="/cart"
             className="flex size-10 items-center justify-center rounded-full bg-[#22C55E] text-white transition-colors hover:bg-green-600"
             aria-label={t("cart")}
