@@ -49,7 +49,18 @@ export async function getProductById(id: string) {
 }
 
 export async function getProductBySlug(slug: string) {
-  return productCrud.findUnique<Product>({ where: { slug } });
+  return prisma.product.findUnique({
+    where: { slug },
+    include: { category: true },
+  });
+}
+
+export async function getFeaturedProducts(limit = 8) {
+  return prisma.product.findMany({
+    include: { category: true },
+    orderBy: { createdAt: "desc" },
+    take: limit,
+  });
 }
 
 export async function createProduct(data: CreateProductInput) {

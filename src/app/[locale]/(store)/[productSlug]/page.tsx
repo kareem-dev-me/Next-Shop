@@ -1,8 +1,9 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
-import { getMockProductBySlug } from "@/lib/mock-products";
+import { getProductBySlug } from "@/utils/products";
 
 type Props = {
   params: Promise<{ productSlug: string }>;
@@ -10,14 +11,13 @@ type Props = {
 
 export default async function ProductPage({ params }: Props) {
   const { productSlug } = await params;
-  const product = getMockProductBySlug(productSlug);
+  const product = await getProductBySlug(productSlug);
 
   if (!product) {
     notFound();
   }
 
   const t = await getTranslations("Product");
-  const tProducts = await getTranslations("Products");
 
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-14">
@@ -31,29 +31,37 @@ export default async function ProductPage({ params }: Props) {
       </Link>
 
       <div className="mt-8 grid gap-10 md:grid-cols-2 md:items-center">
-        <div
-          className="flex aspect-square items-center justify-center rounded-3xl border border-gray-100"
-          style={{ backgroundColor: `${product.accent}14` }}
-        >
-          <div
-            className="size-40 rounded-full sm:size-52"
-            style={{ backgroundColor: product.accent }}
-          />
+        <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-3xl border border-gray-100 bg-[#F3F4F6]">
+          {product.image ? (
+            <Image
+              src={product.image}
+              alt=""
+              fill
+              unoptimized
+              className="object-cover"
+            />
+          ) : (
+            <div className="size-40 rounded-full bg-[#22C55E]/20 sm:size-52">
+              <div className="m-8 size-24 rounded-full bg-[#22C55E]/40 sm:m-10 sm:size-32" />
+            </div>
+          )}
         </div>
 
         <div>
           <span className="inline-flex rounded-full bg-[#F3F4F6] px-3 py-1 text-xs font-medium text-[#6B7280]">
-            {tProducts(product.categoryKey)}
+            {product.category.name}
           </span>
           <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-4xl">
-            {tProducts(product.nameKey)}
+            {product.name}
           </h1>
           <p className="mt-3 text-2xl font-bold text-[#1A1A1A]">
             ${product.price}
           </p>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-[#6B7280]">
-            {tProducts(product.descriptionKey)}
-          </p>
+          {product.description ? (
+            <p className="mt-4 max-w-md text-base leading-relaxed text-[#6B7280]">
+              {product.description}
+            </p>
+          ) : null}
 
           <button
             type="button"

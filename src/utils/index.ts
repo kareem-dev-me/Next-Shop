@@ -17,6 +17,7 @@ export {
   getProductsPage,
   getProductById,
   getProductBySlug,
+  getFeaturedProducts,
   createProduct,
   updateProduct,
   deleteProduct,
@@ -62,3 +63,10 @@ export {
   type CreateAdminUserInput,
   type UpdateAdminUserInput,
 } from "./users";
+
+export {
+  getDashboardStats,
+  getRecentOrders,
+  type DashboardStats,
+  type RecentOrderItem,
+} from "./dashboard";

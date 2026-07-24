@@ -8,7 +8,8 @@
     "cart": "Cart",
     "login": "Log in",
     "logout": "Log out",
-    "profile": "Profile"
+    "profile": "Profile",
+    "account": "Account menu"
   },
   "Footer": {
     "home": "Home",
@@ -22,7 +23,8 @@
     "shopCta": "Shop now",
     "loginCta": "Log in",
     "featured": "Featured picks",
-    "featuredSubtitle": "Hand-picked products ready for your next haul."
+    "featuredSubtitle": "Hand-picked products ready for your next haul.",
+    "noProducts": "No products available yet."
   },
   "Cart": {
     "title": "Your cart",
@@ -199,7 +201,8 @@
     },
     "dashboardPage": {
       "title": "Dashboard",
-      "subtitle": "Overview of your store"
+      "subtitle": "Overview of your store",
+      "noOrders": "No orders yet."
     }
   },
   "Auth": {
