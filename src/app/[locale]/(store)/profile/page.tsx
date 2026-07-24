@@ -1,9 +1,28 @@
-import { ShoppingCart, User } from "lucide-react";
-import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { ShoppingCart } from "lucide-react";
+import { getLocale, getTranslations } from "next-intl/server";
+import { auth } from "@/auth";
+import { Link, redirect } from "@/i18n/navigation";
+import ProfileForm from "@/components/profile/ProfileForm";
+import { getProfileUser } from "@/utils/profile";
 
 export default async function ProfilePage() {
   const t = await getTranslations("Profile");
+  const locale = await getLocale();
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    redirect({ href: "/login", locale });
+  }
+
+  const user = await getProfileUser(userId!);
+  if (!user) {
+    redirect({ href: "/login", locale });
+  }
+
+  const profile = user!;
+  const displayName = profile.name?.trim() || profile.email;
+  const initial = displayName.charAt(0).toUpperCase();
 
   return (
     <div className="mx-auto flex w-full max-w-lg flex-1 flex-col px-4 py-12 sm:px-6">
@@ -14,32 +33,34 @@ export default async function ProfilePage() {
 
       <div className="mt-10 rounded-3xl border border-gray-100 bg-white p-8">
         <div className="flex flex-col items-center text-center">
-          <div className="flex size-20 items-center justify-center rounded-full bg-[#F3F4F6] text-[#1A1A1A]">
-            <User className="size-8" aria-hidden />
+          <div className="flex size-20 items-center justify-center rounded-full bg-[#22C55E]/15 text-2xl font-extrabold text-[#22C55E]">
+            {initial}
           </div>
-          <p className="mt-4 text-lg font-bold text-[#1A1A1A]">{t("name")}</p>
-          <p className="mt-1 text-sm text-[#6B7280]">{t("email")}</p>
+          <p className="mt-4 text-lg font-bold text-[#1A1A1A]">{displayName}</p>
+          <p className="mt-1 text-sm text-[#6B7280]">{profile.email}</p>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3">
+        <ProfileForm
+          defaultValues={{ name: profile.name, email: profile.email }}
+          labels={{
+            name: t("nameLabel"),
+            email: t("emailLabel"),
+            password: t("password"),
+            passwordHint: t("passwordHint"),
+            save: t("save"),
+            success: t("success"),
+          }}
+        />
+
+        <div className="mt-8 border-t border-gray-100 pt-6">
           <Link
             href="/cart"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1A1A1A] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#F3F4F6] px-5 py-3 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
           >
             <ShoppingCart className="size-4" aria-hidden />
             {t("viewCart")}
           </Link>
-          <Link
-            href="/login"
-            className="inline-flex items-center justify-center rounded-full bg-[#F3F4F6] px-5 py-3 text-sm font-semibold text-[#1A1A1A] transition-colors hover:bg-gray-200"
-          >
-            {t("login")}
-          </Link>
         </div>
-
-        <p className="mt-8 text-center text-sm text-[#9CA3AF]">
-          {t("ordersNote")}
-        </p>
       </div>
     </div>
   );

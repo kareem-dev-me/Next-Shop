@@ -44,3 +44,8 @@ export {
   type AddCustomerInput,
   type UpdateCustomerInput,
 } from "./customer";
+
+export {
+  updateProfileSchema,
+  type UpdateProfileInput,
+} from "./profile";

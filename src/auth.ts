@@ -41,7 +41,7 @@ const authorize = async (
   };
 };
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export const { handlers, auth, signIn, signOut, unstable_update } = NextAuth({
   ...authConfig,
   trustHost: true,
   session: { strategy: "jwt" },
@@ -71,10 +71,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ],
   callbacks: {
     ...authConfig.callbacks,
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
       if (user) {
         token.id = user.id!;
         token.role = user.role;
+      }
+      if (trigger === "update" && session?.user) {
+        if (typeof session.user.name === "string") {
+          token.name = session.user.name;
+        }
+        if (typeof session.user.email === "string") {
+          token.email = session.user.email;
+        }
       }
       return token;
     },

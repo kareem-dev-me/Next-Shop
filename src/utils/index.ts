@@ -70,3 +70,10 @@ export {
   type DashboardStats,
   type RecentOrderItem,
 } from "./dashboard";
+
+export {
+  getProfileUser,
+  updateProfile,
+  type ProfileUser,
+  type UpdateProfileData,
+} from "./profile";

@@ -59,6 +59,7 @@ export const authConfig = {
         }
       }
 
+
       if (isProtectedStore && !isLoggedIn) {
         return redirectToLogin(nextUrl);
       }

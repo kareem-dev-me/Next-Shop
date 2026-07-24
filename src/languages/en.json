@@ -57,12 +57,14 @@
   },
   "Profile": {
     "title": "Your profile",
-    "subtitle": "Account details and preferences.",
-    "name": "Guest Shopper",
-    "email": "guest@nextshop.com",
-    "viewCart": "View cart",
-    "login": "Log in",
-    "ordersNote": "Orders coming soon"
+    "subtitle": "Update your account details.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "password": "Password",
+    "passwordHint": "Leave blank to keep your current password.",
+    "save": "Save changes",
+    "success": "Profile updated.",
+    "viewCart": "View cart"
   },
   "Product": {
     "back": "Back to shop",
