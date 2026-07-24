@@ -1,8 +1,9 @@
 import { ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { mockCartItems, mockProducts } from "@/lib/mock-products";
+import { auth } from "@/auth";
+import { Link, redirect } from "@/i18n/navigation";
+import { getCartForUser } from "@/utils/cart";
 
 const inputClassName =
   "mt-2 w-full rounded-full border-0 bg-[#F3F4F6] px-5 py-3.5 text-[#1A1A1A] placeholder:text-gray-400 outline-none transition-shadow focus:ring-2 focus:ring-[#22C55E]/40";
@@ -14,24 +15,22 @@ const SHIPPING_FEE = 10;
 export default async function CheckoutPage() {
   const t = await getTranslations("Checkout");
   const tCommon = await getTranslations("Common");
-  const tProducts = await getTranslations("Products");
+  const tCart = await getTranslations("Cart");
+  const locale = await getLocale();
+  const session = await auth();
+  const userId = session?.user?.id;
 
-  const lines = mockCartItems
-    .map((item) => {
-      const product = mockProducts.find((p) => p.id === item.productId);
-      if (!product) return null;
-      return { ...item, product };
-    })
-    .filter(Boolean) as Array<{
-    productId: string;
-    quantity: number;
-    product: (typeof mockProducts)[number];
-  }>;
+  if (!userId) {
+    redirect({ href: "/login", locale });
+  }
 
-  const subtotal = lines.reduce(
-    (sum, line) => sum + line.product.price * line.quantity,
-    0,
-  );
+  const cart = await getCartForUser(userId!);
+  const { items, subtotal } = cart;
+
+  if (items.length === 0) {
+    redirect({ href: "/cart", locale });
+  }
+
   const total = subtotal + SHIPPING_FEE;
 
   return (
@@ -72,6 +71,7 @@ export default async function CheckoutPage() {
                   type="email"
                   autoComplete="email"
                   required
+                  defaultValue={session?.user?.email ?? ""}
                   className={inputClassName}
                 />
               </div>
@@ -103,6 +103,7 @@ export default async function CheckoutPage() {
                   type="text"
                   autoComplete="name"
                   required
+                  defaultValue={session?.user?.name ?? ""}
                   className={inputClassName}
                 />
               </div>
@@ -168,27 +169,31 @@ export default async function CheckoutPage() {
           </h2>
 
           <ul className="mt-6 flex flex-col gap-4">
-            {lines.map((line) => (
-              <li key={line.productId} className="flex items-center gap-3">
-                <div
-                  className="flex size-12 shrink-0 items-center justify-center rounded-2xl"
-                  style={{ backgroundColor: `${line.product.accent}18` }}
-                >
-                  <div
-                    className="size-5 rounded-full"
-                    style={{ backgroundColor: line.product.accent }}
-                  />
+            {items.map((line) => (
+              <li key={line.id} className="flex items-center gap-3">
+                <div className="relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#F3F4F6]">
+                  {line.product.image ? (
+                    <Image
+                      src={line.product.image}
+                      alt=""
+                      fill
+                      unoptimized
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="size-5 rounded-full bg-[#22C55E]/40" />
+                  )}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-semibold text-[#1A1A1A]">
-                    {tProducts(line.product.nameKey)}
+                    {line.product.name}
                   </p>
                   <p className="text-xs text-[#6B7280]">
-                    {t("qty")}: {line.quantity}
+                    {tCart("qty")}: {line.quantity}
                   </p>
                 </div>
                 <p className="shrink-0 text-sm font-semibold text-[#1A1A1A]">
-                  ${line.product.price * line.quantity}
+                  ${line.lineTotal}
                 </p>
               </li>
             ))}

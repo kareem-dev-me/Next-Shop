@@ -38,8 +38,10 @@ export const authConfig = {
       const isProtectedStore =
         pathWithoutLocale === "/profile" ||
         pathWithoutLocale === "/checkout" ||
+        pathWithoutLocale === "/cart" ||
         pathWithoutLocale.startsWith("/profile/") ||
-        pathWithoutLocale.startsWith("/checkout/");
+        pathWithoutLocale.startsWith("/checkout/") ||
+        pathWithoutLocale.startsWith("/cart/");
 
       if ((isAuthPage || isAdminLogin) && isLoggedIn) {
         return redirectTo(role === "ADMIN" ? "/admin" : "/", nextUrl);

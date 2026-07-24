@@ -33,7 +33,11 @@
     "subtotal": "Subtotal",
     "checkout": "Checkout",
     "continue": "Continue shopping",
-    "empty": "Your cart is empty"
+    "empty": "Your cart is empty",
+    "remove": "Remove",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity",
+    "outOfStock": "Out of stock"
   },
   "Checkout": {
     "title": "Checkout",
@@ -69,6 +73,7 @@
   "Product": {
     "back": "Back to shop",
     "addToCart": "Add to cart",
+    "outOfStock": "Out of stock",
     "from": "From"
   },
   "Products": {

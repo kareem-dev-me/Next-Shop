@@ -33,7 +33,11 @@
     "subtotal": "المجموع الفرعي",
     "checkout": "إتمام الشراء",
     "continue": "متابعة التسوق",
-    "empty": "سلتك فارغة"
+    "empty": "سلتك فارغة",
+    "remove": "إزالة",
+    "increase": "زيادة الكمية",
+    "decrease": "تقليل الكمية",
+    "outOfStock": "غير متوفر"
   },
   "Checkout": {
     "title": "إتمام الشراء",
@@ -69,6 +73,7 @@
   "Product": {
     "back": "العودة للمتجر",
     "addToCart": "أضف إلى السلة",
+    "outOfStock": "غير متوفر",
     "from": "من"
   },
   "Products": {

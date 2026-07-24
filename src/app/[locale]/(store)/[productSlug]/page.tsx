@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import AddToCartButton from "@/components/cart/AddToCartButton";
 import { Link } from "@/i18n/navigation";
 import { getProductBySlug } from "@/utils/products";
 
@@ -63,13 +64,12 @@ export default async function ProductPage({ params }: Props) {
             </p>
           ) : null}
 
-          <button
-            type="button"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-black"
-          >
-            {t("addToCart")}
-            <ArrowRight className="size-4 rtl:rotate-180" aria-hidden />
-          </button>
+          <AddToCartButton
+            productId={product.id}
+            stock={product.stock}
+            addLabel={t("addToCart")}
+            outOfStockLabel={t("outOfStock")}
+          />
         </div>
       </div>
     </div>
